@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7a8eb1972a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/scss/styles.css">
+    <script type="module" src="../assets/js/main.js"></script>
+    <title>Document</title>
+</head>
+<body class="bg-dark">
+    <header class="border-bottom border-white">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 justify-content-between d-flex mt-3 mb-2">
+                    <div class="d-flex col-6">
+                        <div class="text-white p-2 display-6">El juego del TETRIS</div>
+                    </div>
+                    <button id="boton" type="button" class="btn btn-primary me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"><i class="fa-solid fa-bars m-1"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid p-4">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <h1 class="text-white text-center">BORRAR JUGADORES</h1>
+                    <div class="m-4">
+                        <div class="border border-white rounded p-2">
+                            <div class="bg-dark text-center">
+                                <p class="text-white text-center display-6">Usuario</p>
+                                <button type="button" class="btn btn-danger col-11 p-3">BORRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-4">
+                        <div class="border border-white rounded p-2">
+                            <div class="bg-dark text-center">
+                                <p class="text-white text-center display-6">Jaimito</p>
+                                <button type="button" class="btn btn-danger col-11 p-3">BORRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-4">
+                        <div class="border border-white rounded p-2">
+                            <div class="bg-dark text-center">
+                                <p class="text-white text-center display-6">Anuel Oficial no fake :)</p>
+                                <button type="button" class="btn btn-danger col-11 p-3">BORRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="menu" class="offcanvas offcanvas-end" tabindex="-1" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title display-6 text-white" id="offcanvasExampleLabel">Menú Administrador</h5>
+          <button id="boton1" type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body text-white">
+          <div class="dropdown mt-3 text-white">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+              Ver
+            </button>
+            <ul id="dropdownmenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="/src/index.html">Logout</a></li>
+                <li><a class="dropdown-item" href="ranking.html">Ver ranking jugadores</a></li>
+                <li><a class="dropdown-item" href="administrador.html">Perfil Administrador</a></li>
+                <li><a class="dropdown-item" href="borrarp.html">Ver y borrar partidas según filtro</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <script>
+        function MenuClick(event) {                   
+            var menu = document.getElementById('menu'); 
+            var dropdownmenu = document.getElementById('dropdownmenu');           
+
+            
+
+            if (event.target.nodeName == "I" || event.target.nodeName == "BUTTON") {
+                console.log("Clicked", event.target.textContent);  
+                
+                let style = menu.classList.toString();
+
+                if (style == 'offcanvas offcanvas-end'){
+                    menu.classList.add("show")                     
+                } 
+                
+                style = dropdownmenu.classList.toString();
+
+                if (style == 'dropdown-menu'){
+                    dropdownmenu.classList.add("show")                     
+                }else if (style == 'dropdown-menu show') {
+                    for (let cssClass of menu.classList) {                                            
+                        if(cssClass == "show"){                                    
+                            dropdownmenu.classList.remove("show");                                                  
+                        }                        
+                    }    
+                }
+            }else{
+                for (let cssClass of menu.classList) {                                            
+                    if(cssClass == "show"){                                    
+                        menu.classList.remove("show");                                                  
+                    }                        
+                }      
+            }                            
+        }
+
+        var boton = document.getElementById('boton');           
+        var body = document.getElementsByClassName('bg-dark')[0];
+        boton.addEventListener("click", MenuClick);        
+        body.addEventListener("click", MenuClick);      
+        
+        var dropdownBoton = document.getElementById('boton1');   
+        dropdownBoton.addEventListener("click", MenuClick);      
+    </script>
+</body>
+</html>
